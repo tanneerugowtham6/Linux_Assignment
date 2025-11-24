@@ -264,6 +264,8 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="490" height="438" alt="image" src="https://github.com/user-attachments/assets/a6367e23-506b-4002-875c-9d38bd0d1533" />
     <img width="403" height="156" alt="image" src="https://github.com/user-attachments/assets/3d9c8408-9bd2-4983-8c1a-63092fb17f05" />
 
+---
+
 ## Task-2: User Management & Access Control
 
 ### Steps:
@@ -405,3 +407,63 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="481" height="142" alt="image" src="https://github.com/user-attachments/assets/e310e199-7d6d-4ebe-bcf4-0d7376e6e606" />
     <img width="481" height="141" alt="image" src="https://github.com/user-attachments/assets/f0c693f1-daaf-4b35-8287-a9c1fdeef3d5" />
 
+---
+
+## Task-3: Backup Configuration for Web Servers
+
+### Steps:
+
+1. **Install Apache and Nginx**
+
+    ```sh
+    sudo apt update
+    sudo apt install -y nginx
+    sudo systemctl enable nginx
+    sudo systemctl status nginx
+    ```
+
+    <img width="745" height="411" alt="image" src="https://github.com/user-attachments/assets/ef0458bd-b47e-4eab-b68a-66dccf2bd4d9" />
+    <img width="1097" height="190" alt="image" src="https://github.com/user-attachments/assets/43e25754-7fdd-466c-95a7-510bc443c1ae" />
+    <img width="760" height="85" alt="image" src="https://github.com/user-attachments/assets/ef5559d1-127e-4872-b64a-637f506d1732" />
+    <img width="918" height="245" alt="image" src="https://github.com/user-attachments/assets/ac56f431-5263-47fe-9ee9-c61ec98abe4b" />
+
+    ```sh
+    sudo apt update
+    sudo apt install -y apache2
+    sudo systemctl enable apache2
+    sudo systemctl status apache2
+    ```
+
+    <img width="743" height="192" alt="image" src="https://github.com/user-attachments/assets/6fd236f1-7df1-4b02-be1e-44fbe344cd3a" />
+    <img width="972" height="203" alt="image" src="https://github.com/user-attachments/assets/bfe11481-cd1a-40f9-a4da-1b62a8016c49" />
+    <img width="763" height="51" alt="image" src="https://github.com/user-attachments/assets/166ce5ad-c21e-4356-b5af-8292bc6296e3" />
+    <img width="703" height="254" alt="image" src="https://github.com/user-attachments/assets/c5f1f03c-6009-49a0-be55-dc4339c668e0" />
+
+2. **ndsjvbjds**
+
+    
+    <img width="497" height="38" alt="image" src="https://github.com/user-attachments/assets/d86cb27d-8265-40a4-8bf3-fdcce72a7ea3" /> apache backup file create
+    <img width="671" height="684" alt="image" src="https://github.com/user-attachments/assets/c9d487e2-0d41-48d7-b510-2edd9ce00f5f" /> apache backup script
+    <img width="671" height="1027" alt="image" src="https://github.com/user-attachments/assets/82a495f0-5e54-4103-9e29-a9e9954382f0" /> backup execute
+
+    <img width="492" height="33" alt="image" src="https://github.com/user-attachments/assets/1a33873b-a142-4512-b873-72f043c795fd" /> nginx file create
+    <img width="656" height="790" alt="image" src="https://github.com/user-attachments/assets/8d8e682b-0024-4290-93f5-05d5b509979a" /> nginx bckp script
+    <img width="646" height="560" alt="image" src="https://github.com/user-attachments/assets/b4fb7ab1-afab-4b57-9014-e3b8b818cd8f" /> backup execute
+
+
+
+<img width="519" height="468" alt="image" src="https://github.com/user-attachments/assets/5e4d98e8-840d-4eea-b1ca-5a04f014cf87" /> nginx cronjob
+
+<img width="504" height="420" alt="image" src="https://github.com/user-attachments/assets/bd4eb4af-b1a1-430c-833d-22aa6bc0d1f0" /> apache cronjob
+
+
+<img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/94a5be37-76b5-4316-b86d-332269b33d4f" /> nginx cron cofirmation
+
+<img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/c9e2d094-8d72-42bd-8492-76158c8da716" /> apache cron confirmation
+
+
+
+
+4. klsndjvbnsd
+5. sdjkvbjds
+6. djkbvjks
