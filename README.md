@@ -1,4 +1,31 @@
 # Linux_Assignment
+
+---
+
+## Problem Statement
+
+Rahul, a Senior DevOps engineer at TechCorp, needs to set up and manage development environments for two new developers, Sarah and Mike. The setup must ensure proper system monitoring, user management, troubleshooting capabilities, and automated backup procedures.
+
+As a Fresher DevOps Engineer, you are assisting Rahul in implementing a secure, monitored, and well-maintained development environment that meets the organization’s operational and security standards. Additionally, Sarah and Mike are tasked with setting up automated backups for their respective web servers.
+
+### Task 1: System Monitoring Setup
+
+Install and configure htop or nmon to monitor CPU, memory, and processes, using df and du for disk usage tracking, and identifying resource-intensive processes. Proper logging of system metrics and clear documentation of the setup are essential. 
+
+### Task 2: User Management and Access Control
+
+Evaluation includes creating user accounts for Sarah and Mike with secure passwords, setting up isolated directories with appropriate permissions, and enforcing a password policy with expiration and complexity. Detailed documentation of user management steps is required. 
+
+### Task 3: Backup Configuration for Web Servers
+
+Configure automated backups for Apache (/etc/httpd/, /var/www/html/) and Nginx (/etc/nginx/, /usr/share/nginx/html/), scheduling cron jobs to run every Tuesday at 12:00 AM, using the correct naming convention for backup files, and verifying backup integrity. Proper documentation and logs are necessary. 
+
+Overall Report and Presentation
+
+The report should clearly summarize implementation steps and challenges, including relevant screenshots or terminal outputs demonstrating task completion.
+
+---
+
 ## Practice Assignment on Testing, Linux and Servers
 This repository consists of Assignments performed as part of HeroVired Program.
 
@@ -12,7 +39,7 @@ This repository consists of Assignments performed as part of HeroVired Program.
 
 ## Task-1: System Monitoring Setup
 
-### Steps
+### Steps:
 1. **Update the repositories and install htop**
 
     ```sh
@@ -237,4 +264,43 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="490" height="438" alt="image" src="https://github.com/user-attachments/assets/a6367e23-506b-4002-875c-9d38bd0d1533" />
     <img width="403" height="156" alt="image" src="https://github.com/user-attachments/assets/3d9c8408-9bd2-4983-8c1a-63092fb17f05" />
 
-## Task-2: 
+## Task-2: User Management & Access Control
+
+### Steps:
+
+1. **Create user accounts for Sarah and Mike**
+
+    ```sh
+    sudo useradd -m -d /home/Sarah -s /bin/bash Sarah
+    sudo useradd -m -d /home/Mike -s /bin/bash Mike
+    ```
+
+    <img width="541" height="31" alt="image" src="https://github.com/user-attachments/assets/5ff3d36c-c6f6-41c7-802d-947cf85710a3" />
+    <img width="541" height="29" alt="image" src="https://github.com/user-attachments/assets/bc4e0cbe-d4f5-4e22-a1e9-ea18c97b448d" />
+
+2. **Set password for the user's [Sarah & Mike]**
+
+    ```sh
+    sudo passwd Sarah
+    ```
+
+    <img width="325" height="74" alt="image" src="https://github.com/user-attachments/assets/3ef5b55a-edc7-4c91-a37c-cd79d8cae9eb" />
+
+    ```sh
+    sudo passwd Mike
+    ```
+
+    <img width="325" height="69" alt="image" src="https://github.com/user-attachments/assets/c0fd97a0-6218-4a5a-b78d-495fe629d0cc" />
+
+3. **Create Workspace Directories for each user**
+
+    ```sh
+    sudo mkdir -p /home/Sarah/workspace
+    sudo mkdir -p /home/Mike/workspace
+    ```
+
+    <img width="443" height="26" alt="image" src="https://github.com/user-attachments/assets/db6e448b-8e9e-48ce-8054-afc7ea8a85a5" />
+    <img width="443" height="28" alt="image" src="https://github.com/user-attachments/assets/4256dfde-6e4a-443d-aec5-40017a13997d" />
+
+4. sbjbvsd
+5. sdvdnacn
