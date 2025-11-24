@@ -302,5 +302,106 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="443" height="26" alt="image" src="https://github.com/user-attachments/assets/db6e448b-8e9e-48ce-8054-afc7ea8a85a5" />
     <img width="443" height="28" alt="image" src="https://github.com/user-attachments/assets/4256dfde-6e4a-443d-aec5-40017a13997d" />
 
-4. sbjbvsd
-5. sdvdnacn
+4. **Apply directory Ownership and Permissions**
+
+    ```sh
+    # Assign ownership to each user
+    sudo chown -R Sarah:Sarah /home/Sarah
+    sudo chown -R Mike:Mike /home/Mike
+    ```
+
+    <img width="457" height="29" alt="image" src="https://github.com/user-attachments/assets/4dd70ebf-d728-4cc1-bf40-7eeaafa57ade" />
+    <img width="457" height="29" alt="image" src="https://github.com/user-attachments/assets/f40f5ee7-62b7-43bd-afdf-822df7004071" />
+
+    ```sh
+    # Restrict access to only the owner to Read/Write/Execute their workspace
+    sudo chmod 700 /home/Sarah
+    sudo chmod 700 /home/Sarah/workspace
+
+    sudo chmod 700 /home/Mike
+    sudo chmod 700 /home/Mike/workspace
+    ```
+
+    <img width="457" height="42" alt="image" src="https://github.com/user-attachments/assets/84b91cf3-41cf-43a9-88a1-4e7b86d9543a" />
+    <img width="457" height="42" alt="image" src="https://github.com/user-attachments/assets/0a1d51ee-15f7-437b-9da1-6715738b85a6" />
+
+    Verify the permissions of the directories.
+
+    ```sh
+    sudo ls -ld /home/Sarah /home/Sarah/workspace /home/Mike /home/Mike/workspace
+    ```
+
+    <img width="741" height="87" alt="image" src="https://github.com/user-attachments/assets/4fc703be-6923-49ce-81c0-6e49bc3968e9" />
+
+6. **Configure password expiration policy(30 days)**
+
+    ```sh
+    sudo chage -M 30 Sarah
+    sudo chage -M 30 Mike
+    ```
+    
+    <img width="364" height="46" alt="image" src="https://github.com/user-attachments/assets/71b14c2f-6192-468c-9b3d-18106fd2bb2d" />
+
+    Verify password expiration policy has been set.
+
+    ```sh
+    sudo chage -l Sarah
+    sudo chage -l Mike
+    ```
+
+    <img width="503" height="126" alt="image" src="https://github.com/user-attachments/assets/f55af2c3-bbd7-444e-8847-f4f996a08740" />
+    <img width="503" height="126" alt="image" src="https://github.com/user-attachments/assets/2f1a911a-6843-4e72-b03c-5695b065edd8" />
+
+8. **Configure password complexity requirement**
+
+    Ensuring password complexity as below,
+    - Minimum length: 8
+    - At least 1 uppercase
+    - At least 1 lowercase
+    - At least 1 digit
+    - At least 1 special character
+    
+    `Ubuntu 24.04 uses pwquality via PAM`
+  
+    ```sh
+    sudo nano /etc/security/pwquality.conf
+    ```
+
+    Add the below lines in the `pwquality.conf` file
+   
+    <img width="574" height="771" alt="image" src="https://github.com/user-attachments/assets/2e13cb04-fda5-4b47-911f-3beeb24f0900" />
+
+    Save the file and Exit [`Ctrl+x` & `Enter` (or) `control+x` & `return`]
+   
+    <img width="469" height="29" alt="image" src="https://github.com/user-attachments/assets/bab302de-97f8-4772-96c0-9764008acc2d" />
+
+    ```sh
+    sudo cp /etc/pam.d/common-password /etc/pam.d/common-password.bak
+    ```
+
+    Add `enforce_for_root` after `pam_pwquality.so retry=3`
+
+    <img width="734" height="493" alt="Untitled" src="https://github.com/user-attachments/assets/f849d674-8232-44ec-aac5-27068ed9f7cc" />
+
+
+10. **Validate password expiration and Complexity policies**
+
+    To confirm Ubuntu is actually enforcing the policy configured.
+
+    ```sh
+    grep pwquality /etc/pam.d/common-password
+    ```
+
+    <img width="703" height="42" alt="image" src="https://github.com/user-attachments/assets/53525b05-acb9-4ba0-9a7d-c664cbde7b31" />
+
+
+    Testing the password complexity policy
+
+    ```sh
+    sudo passwd Sarah
+    sudo passwd Mike
+    ```
+
+    <img width="481" height="142" alt="image" src="https://github.com/user-attachments/assets/e310e199-7d6d-4ebe-bcf4-0d7376e6e606" />
+    <img width="481" height="141" alt="image" src="https://github.com/user-attachments/assets/f0c693f1-daaf-4b35-8287-a9c1fdeef3d5" />
+
