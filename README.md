@@ -515,7 +515,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     0 0 * * 2 /usr/local/bin/apache_backup.sh
     ```
     
-    <img width="504" height="420" alt="image" src="https://github.com/user-attachments/assets/bd4eb4af-b1a1-430c-833d-22aa6bc0d1f0" /> apache cronjob
+    <img width="504" height="420" alt="image" src="https://github.com/user-attachments/assets/bd4eb4af-b1a1-430c-833d-22aa6bc0d1f0" />
 
     **Nginx Automated Backup Cron job**
    
@@ -531,7 +531,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     0 0 * * 2 /usr/local/bin/nginx_backup.sh
     ```
     
-    <img width="519" height="468" alt="image" src="https://github.com/user-attachments/assets/5e4d98e8-840d-4eea-b1ca-5a04f014cf87" /> nginx cronjob
+    <img width="519" height="468" alt="image" src="https://github.com/user-attachments/assets/5e4d98e8-840d-4eea-b1ca-5a04f014cf87" />
 
 4. **Confirm Cron Job configuration applied successfully**
 
