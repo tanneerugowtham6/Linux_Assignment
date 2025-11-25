@@ -335,7 +335,7 @@ This repository consists of Assignments performed as part of HeroVired Program.
 
     <img width="741" height="87" alt="image" src="https://github.com/user-attachments/assets/4fc703be-6923-49ce-81c0-6e49bc3968e9" />
 
-6. **Configure password expiration policy(30 days)**
+5. **Configure password expiration policy(30 days)**
 
     ```sh
     sudo chage -M 30 Sarah
@@ -354,9 +354,9 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="503" height="126" alt="image" src="https://github.com/user-attachments/assets/f55af2c3-bbd7-444e-8847-f4f996a08740" />
     <img width="503" height="126" alt="image" src="https://github.com/user-attachments/assets/2f1a911a-6843-4e72-b03c-5695b065edd8" />
 
-8. **Configure password complexity requirement**
+6. **Configure password complexity requirement**
 
-    Ensuring password complexity as below,
+    Ensure password complexity as below,
     - Minimum length: 8
     - At least 1 uppercase
     - At least 1 lowercase
@@ -381,12 +381,12 @@ This repository consists of Assignments performed as part of HeroVired Program.
     sudo cp /etc/pam.d/common-password /etc/pam.d/common-password.bak
     ```
 
-    Add `enforce_for_root` after `pam_pwquality.so retry=3`
+    Append `enforce_for_root` at `pam_pwquality.so retry=3`
 
     <img width="734" height="493" alt="Untitled" src="https://github.com/user-attachments/assets/f849d674-8232-44ec-aac5-27068ed9f7cc" />
 
 
-10. **Validate password expiration and Complexity policies**
+7. **Validate password expiration and Complexity policies**
 
     To confirm Ubuntu is actually enforcing the policy configured.
 
@@ -411,21 +411,15 @@ This repository consists of Assignments performed as part of HeroVired Program.
 
 ## Task-3: Backup Configuration for Web Servers
 
+### Prerequisites:
+
+This tasks requires two separate servers, Apache Server for Sarah and Niginx Server for Mike.
+
 ### Steps:
 
-1. **Install Apache and Nginx**
+1. **Install Apache and Nginx on servers**
 
-    ```sh
-    sudo apt update
-    sudo apt install -y nginx
-    sudo systemctl enable nginx
-    sudo systemctl status nginx
-    ```
-
-    <img width="745" height="411" alt="image" src="https://github.com/user-attachments/assets/ef0458bd-b47e-4eab-b68a-66dccf2bd4d9" />
-    <img width="1097" height="190" alt="image" src="https://github.com/user-attachments/assets/43e25754-7fdd-466c-95a7-510bc443c1ae" />
-    <img width="760" height="85" alt="image" src="https://github.com/user-attachments/assets/ef5559d1-127e-4872-b64a-637f506d1732" />
-    <img width="918" height="245" alt="image" src="https://github.com/user-attachments/assets/ac56f431-5263-47fe-9ee9-c61ec98abe4b" />
+    Installing Apache2 on Mike's server
 
     ```sh
     sudo apt update
@@ -439,15 +433,68 @@ This repository consists of Assignments performed as part of HeroVired Program.
     <img width="763" height="51" alt="image" src="https://github.com/user-attachments/assets/166ce5ad-c21e-4356-b5af-8292bc6296e3" />
     <img width="703" height="254" alt="image" src="https://github.com/user-attachments/assets/c5f1f03c-6009-49a0-be55-dc4339c668e0" />
 
-2. **ndsjvbjds**
+    Installing Nginx on Sarah's server
+   
+    ```sh
+    sudo apt update
+    sudo apt install -y nginx
+    sudo systemctl enable nginx
+    sudo systemctl status nginx
+    ```
 
+    <img width="745" height="411" alt="image" src="https://github.com/user-attachments/assets/ef0458bd-b47e-4eab-b68a-66dccf2bd4d9" />
+    <img width="1097" height="190" alt="image" src="https://github.com/user-attachments/assets/43e25754-7fdd-466c-95a7-510bc443c1ae" />
+    <img width="760" height="85" alt="image" src="https://github.com/user-attachments/assets/ef5559d1-127e-4872-b64a-637f506d1732" />
+    <img width="918" height="245" alt="image" src="https://github.com/user-attachments/assets/ac56f431-5263-47fe-9ee9-c61ec98abe4b" />
     
-    <img width="497" height="38" alt="image" src="https://github.com/user-attachments/assets/d86cb27d-8265-40a4-8bf3-fdcce72a7ea3" /> apache backup file create
-    <img width="671" height="684" alt="image" src="https://github.com/user-attachments/assets/c9d487e2-0d41-48d7-b510-2edd9ce00f5f" /> apache backup script
+2. **Create automated backup scripts for Apache and Nginx**
+
+    ```sh
+    sudo nano /usr/local/bin/apache_backup.sh
+    ```
+
+    Add `apache_backup.sh` script from the repository.
+
+    <img width="671" height="684" alt="image" src="https://github.com/user-attachments/assets/c9d487e2-0d41-48d7-b510-2edd9ce00f5f" />
+
+    Save the file and Exit [`Ctrl+x` & `Enter` (or) `control+x` & `return`]
+   
+    <img width="497" height="38" alt="image" src="https://github.com/user-attachments/assets/d86cb27d-8265-40a4-8bf3-fdcce72a7ea3" />
+
+    Execute the script and check if backup is successful
+
+    ```sh
+    sudo chmod +x /usr/local/bin/apache_backup.sh
+    sudo /usr/local/bin/apache_backup.sh
+    ls -lh /backups/apache_backup_*.tar.gz | tail -n 1
+    sudo tail -n 60 /var/log/monitoring/apache_backup_$(date +%F).log
+    ```
+    
     <img width="671" height="1027" alt="image" src="https://github.com/user-attachments/assets/82a495f0-5e54-4103-9e29-a9e9954382f0" /> backup execute
 
-    <img width="492" height="33" alt="image" src="https://github.com/user-attachments/assets/1a33873b-a142-4512-b873-72f043c795fd" /> nginx file create
+    
+    ```sh
+    sudo nano /usr/local/bin/apache_backup.sh
+    ```
+
+    Add `nginx_backup.sh` script from the repository.
+   
     <img width="656" height="790" alt="image" src="https://github.com/user-attachments/assets/8d8e682b-0024-4290-93f5-05d5b509979a" /> nginx bckp script
+
+    
+    Save the file and Exit [`Ctrl+x` & `Enter` (or) `control+x` & `return`]
+      
+    <img width="492" height="33" alt="image" src="https://github.com/user-attachments/assets/1a33873b-a142-4512-b873-72f043c795fd" /> nginx file create
+
+    Execute the script and check if backup is successful
+
+    ```sh
+    sudo chmod +x /usr/local/bin/nginx_backup.sh
+    sudo /usr/local/bin/nginx_backup.sh
+    ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1
+    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log
+    ```
+    
     <img width="646" height="560" alt="image" src="https://github.com/user-attachments/assets/b4fb7ab1-afab-4b57-9014-e3b8b818cd8f" /> backup execute
 
 
@@ -464,6 +511,6 @@ This repository consists of Assignments performed as part of HeroVired Program.
 
 
 
-4. klsndjvbnsd
+3. **Configure Cron jobs to Automate Backup's**
 5. sdjkvbjds
 6. djkbvjks
