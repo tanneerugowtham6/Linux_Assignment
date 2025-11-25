@@ -467,14 +467,13 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     sudo chmod +x /usr/local/bin/apache_backup.sh
     sudo /usr/local/bin/apache_backup.sh
     ls -lh /backups/apache_backup_*.tar.gz | tail -n 1
-    sudo tail -n 60 /var/log/monitoring/apache_backup_$(date +%F).log
+    ls -lh /var/log/monitoring/apache_backup_*.log | tail -n 1
     ```
     
-    <img width="671" height="1027" alt="image" src="https://github.com/user-attachments/assets/82a495f0-5e54-4103-9e29-a9e9954382f0" /> backup execute
+    <img width="636" height="72" alt="image" src="https://github.com/user-attachments/assets/6ae242db-6324-4790-85a8-f813661eedb6" />
 
-    
     ```sh
-    sudo nano /usr/local/bin/apache_backup.sh
+    sudo nano /usr/local/bin/nginx_backup.sh
     ```
 
     Add `nginx_backup.sh` script from the repository.
@@ -492,10 +491,10 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     sudo chmod +x /usr/local/bin/nginx_backup.sh
     sudo /usr/local/bin/nginx_backup.sh
     ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1
-    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log
+    ls -lh /var/log/monitoring/nginx_backup_*.log | tail -n 1
     ```
     
-    <img width="646" height="560" alt="image" src="https://github.com/user-attachments/assets/b4fb7ab1-afab-4b57-9014-e3b8b818cd8f" /> backup execute
+    <img width="995" height="97" alt="image" src="https://github.com/user-attachments/assets/6e383d82-727c-45bc-8523-d9432e56b2ef" />
 
 
 
