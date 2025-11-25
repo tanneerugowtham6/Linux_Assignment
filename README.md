@@ -92,37 +92,7 @@ This repository consists of Assignments performed as part of HeroVired Program.
     sudo nano /usr/local/bin/initial_metrics.sh
     ```
 
-    Add the below script in the file
-
-    ```sh
-    #!/usr/bin/env bash
-
-    LOGDIR="/var/log/monitoring"
-    mkdir -p "$LOGDIR"
-    
-    LOGFILE="$LOGDIR/initial_metrics_$(date +%F_%H-%M-%S).log"
-    
-    {
-      echo "=== Initial System Metrics - $(date) ==="
-      echo ""
-      echo "---- TOP (first 20 lines) ----"
-      top -b -n1 | head -n 20
-      echo ""
-      echo "---- Highest CPU processes ----"
-      ps aux --sort=-%cpu | head -n 15
-      echo ""
-      echo "---- Highest Memory processes ----"
-      ps aux --sort=-%mem | head -n 15
-      echo ""
-      echo "---- Disk usage (df -h) ----"
-      df -h
-      echo ""
-      echo "---- Memory usage (free -h) ----"
-      free -h || true
-      echo ""
-      echo "=== End of Report ==="
-    } > "$LOGFILE"
-    ```
+    Add `initial_metrics.sh` script from the repository.
 
     <img width="414" height="393" alt="image" src="https://github.com/user-attachments/assets/227dde22-bd58-4601-ad67-b1273b322e1e" />
 
@@ -152,28 +122,7 @@ This repository consists of Assignments performed as part of HeroVired Program.
     sudo nano /usr/local/bin/disk_usage.sh
     ```
 
-    Add the below script in the file
-   
-    ```sh
-    #!/usr/bin/env bash
-
-    LOGDIR="/var/log/monitoring"
-    mkdir -p "$LOGDIR"
-    
-    LOGFILE="$LOGDIR/disk_usage_$(date +%F_%H-%M-%S).log"
-    
-    {
-      echo "=== Disk Usage Report - $(date) ==="
-      echo ""
-      echo "---- df -h ----"
-      df -h
-      echo ""
-      echo "---- Largest Directories in / ----"
-      du -sh /* 2>/dev/null | sort -h | tail -n 10
-      echo ""
-      echo "=== End of Report ==="
-    } > "$LOGFILE"
-    ```
+    Add `disk_usage.sh` script from the repository.
 
     <img width="381" height="269" alt="image" src="https://github.com/user-attachments/assets/384305cf-6b46-4ab4-8358-385c6ec68118" />
 
@@ -203,31 +152,7 @@ This repository consists of Assignments performed as part of HeroVired Program.
     sudo nano /usr/local/bin/top_process_report.sh
     ```
 
-    Add the below script in the file
-   
-    ```sh
-    #!/usr/bin/env bash
-
-    LOGDIR="/var/log/monitoring"
-    mkdir -p "$LOGDIR"
-    
-    LOGFILE="$LOGDIR/top_proc_$(date +%F).log"
-    
-    {
-      echo "=== Top Processes Report - $(date) ==="
-      echo ""
-      echo "---- Top CPU consumers ----"
-      ps aux --sort=-%cpu | head -n 15
-      echo ""
-      echo "---- Top Memory consumers ----"
-      ps aux --sort=-%mem | head -n 15
-      echo ""
-      echo "---- Snapshot of top (first 20 lines) ----"
-      top -b -n1 | head -n 20
-      echo ""
-      echo "=== End of Report ==="
-    } > "$LOGFILE"
-    ```
+    Add `top_process_report.sh` script from the repository.
 
     <img width="368" height="311" alt="image" src="https://github.com/user-attachments/assets/80c10fa9-593d-406d-9ec4-67fa2ba88507" />
 
@@ -481,7 +406,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     ls -lh /var/log/monitoring/apache_backup_*.log | tail -n 1
     ```
     
-    <img width="636" height="72" alt="image" src="https://github.com/user-attachments/assets/6ae242db-6324-4790-85a8-f813661eedb6" />
+    <img width="671" height="1027" alt="image" src="https://github.com/user-attachments/assets/82a495f0-5e54-4103-9e29-a9e9954382f0" />
 
     **Nginx Backup**
    
@@ -506,7 +431,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     ls -lh /var/log/monitoring/nginx_backup_*.log | tail -n 1
     ```
     
-    <img width="995" height="97" alt="image" src="https://github.com/user-attachments/assets/6e383d82-727c-45bc-8523-d9432e56b2ef" />
+    <img width="646" height="560" alt="image" src="https://github.com/user-attachments/assets/b4fb7ab1-afab-4b57-9014-e3b8b818cd8f" />
 
 3. **Configure Cron jobs to Automate Backup's**
 
