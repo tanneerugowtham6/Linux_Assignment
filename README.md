@@ -403,7 +403,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     sudo chmod +x /usr/local/bin/apache_backup.sh
     sudo /usr/local/bin/apache_backup.sh
     ls -lh /backups/apache_backup_*.tar.gz | tail -n 1
-    ls -lh /var/log/monitoring/apache_backup_*.log | tail -n 1
+    sudo tail -n 60 /var/log/monitoring/apache_backup_$(date +%F).log
     ```
     
     <img width="671" height="1027" alt="image" src="https://github.com/user-attachments/assets/82a495f0-5e54-4103-9e29-a9e9954382f0" />
@@ -428,7 +428,7 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     sudo chmod +x /usr/local/bin/nginx_backup.sh
     sudo /usr/local/bin/nginx_backup.sh
     ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1
-    ls -lh /var/log/monitoring/nginx_backup_*.log | tail -n 1
+    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log
     ```
     
     <img width="646" height="560" alt="image" src="https://github.com/user-attachments/assets/b4fb7ab1-afab-4b57-9014-e3b8b818cd8f" />
@@ -482,8 +482,8 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     **Nginx Cron job verification**
    
     ```sh
-    ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1
-    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log
+    ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1 || true
+    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log || true
     sudo crontab -l | sed -n '1,200p' || true
     ```
 
