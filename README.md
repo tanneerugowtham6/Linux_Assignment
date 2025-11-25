@@ -32,8 +32,17 @@ This repository consists of Assignments performed as part of HeroVired Program.
 ---
 
 ## Environment
-**OS:** Ubuntu
-**Cloud:** AWS
+
+### **Cloud Platform**
+- AWS EC2
+### **Operating System**
+- Ubuntu
+### **Servers Used**
+- **Development Server:** Used for Monitoring Setup and User Management
+- **Apache Server:** Separate EC2 Instance running Apache
+- **Nginx Server:** Separate EC2 Instance running Nginx
+### **Backup Directory**
+- `/backups/` on both apache and nginx servers
 
 ---
 
