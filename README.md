@@ -449,6 +449,8 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     
 2. **Create automated backup scripts for Apache and Nginx**
 
+    **Apache Backup**
+   
     ```sh
     sudo nano /usr/local/bin/apache_backup.sh
     ```
@@ -472,18 +474,19 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     
     <img width="636" height="72" alt="image" src="https://github.com/user-attachments/assets/6ae242db-6324-4790-85a8-f813661eedb6" />
 
+    **Nginx Backup**
+   
     ```sh
     sudo nano /usr/local/bin/nginx_backup.sh
     ```
 
     Add `nginx_backup.sh` script from the repository.
    
-    <img width="656" height="790" alt="image" src="https://github.com/user-attachments/assets/8d8e682b-0024-4290-93f5-05d5b509979a" /> nginx bckp script
-
+    <img width="656" height="790" alt="image" src="https://github.com/user-attachments/assets/8d8e682b-0024-4290-93f5-05d5b509979a" />
     
     Save the file and Exit [`Ctrl+x` & `Enter` (or) `control+x` & `return`]
       
-    <img width="492" height="33" alt="image" src="https://github.com/user-attachments/assets/1a33873b-a142-4512-b873-72f043c795fd" /> nginx file create
+    <img width="492" height="33" alt="image" src="https://github.com/user-attachments/assets/1a33873b-a142-4512-b873-72f043c795fd" />
 
     Execute the script and check if backup is successful
 
@@ -496,20 +499,58 @@ This tasks requires two separate servers, Apache Server for Sarah and Niginx Ser
     
     <img width="995" height="97" alt="image" src="https://github.com/user-attachments/assets/6e383d82-727c-45bc-8523-d9432e56b2ef" />
 
-
-
-<img width="519" height="468" alt="image" src="https://github.com/user-attachments/assets/5e4d98e8-840d-4eea-b1ca-5a04f014cf87" /> nginx cronjob
-
-<img width="504" height="420" alt="image" src="https://github.com/user-attachments/assets/bd4eb4af-b1a1-430c-833d-22aa6bc0d1f0" /> apache cronjob
-
-
-<img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/94a5be37-76b5-4316-b86d-332269b33d4f" /> nginx cron cofirmation
-
-<img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/c9e2d094-8d72-42bd-8492-76158c8da716" /> apache cron confirmation
-
-
-
-
 3. **Configure Cron jobs to Automate Backup's**
-5. sdjkvbjds
-6. djkbvjks
+
+    **Apache Automated Backup Cron job**
+   
+    ```sh
+    sudo crontab -e
+    Choose 1-4 [1]: 1
+    ```
+
+    Add the below cron jobs schedule to the file
+
+    ```sh
+    # apache_backup.sh Cron Job
+    0 0 * * 2 /usr/local/bin/apache_backup.sh
+    ```
+    
+    <img width="504" height="420" alt="image" src="https://github.com/user-attachments/assets/bd4eb4af-b1a1-430c-833d-22aa6bc0d1f0" /> apache cronjob
+
+    **Nginx Automated Backup Cron job**
+   
+    ```sh
+    sudo crontab -e
+    Choose 1-4 [1]: 1
+    ```
+
+    Add the below cron jobs schedule to the file
+
+    ```sh
+    # nginx_backup.sh Cron Job
+    0 0 * * 2 /usr/local/bin/nginx_backup.sh
+    ```
+    
+    <img width="519" height="468" alt="image" src="https://github.com/user-attachments/assets/5e4d98e8-840d-4eea-b1ca-5a04f014cf87" /> nginx cronjob
+
+4. **Confirm Cron Job configuration applied successfully**
+
+    **Apache Cron job verification**
+   
+    ```sh
+    ls -lh /backups/apache_backup_*.tar.gz | tail -n 1 || true
+    sudo tail -n 60 /var/log/monitoring/apache_backup_$(date +%F).log || true
+    sudo crontab -l | sed -n '1,200p' || true
+    ```
+
+    <img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/c9e2d094-8d72-42bd-8492-76158c8da716" />
+   
+    **Nginx Cron job verification**
+   
+    ```sh
+    ls -lh /backups/nginx_backup_*.tar.gz | tail -n 1
+    sudo tail -n 60 /var/log/monitoring/nginx_backup_$(date +%F).log
+    sudo crontab -l | sed -n '1,200p' || true
+    ```
+
+    <img width="601" height="986" alt="image" src="https://github.com/user-attachments/assets/94a5be37-76b5-4316-b86d-332269b33d4f" />
